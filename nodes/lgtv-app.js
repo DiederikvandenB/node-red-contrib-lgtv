@@ -15,8 +15,8 @@ module.exports = function (RED) {
 
             if (node._wireCount) {
                 node.tvConn.subscribe(node.id, 'ssap://com.webos.applicationManager/getForegroundAppInfo', (err, res) => {
-                    if (!err && res && res.appId) {
-                        node.send({payload: res.appId});
+                    if (!err && res) {
+                        node.send({payload: (res.appId ?? '')});
                     }
                 });
             }
